@@ -15,17 +15,16 @@ func (n *Node) SetNext(value int) *Node {
 
 	if n == nil {
 		return &next
-	} else {
-		*n.next = next
 	}
 
+	*n.next = next
 	return &next
 }
 
 func (n *Node) String() string {
 	if n == nil {
 		return "nil"
-	} else {
-		return fmt.Sprintf("%d\n", n.value)
 	}
+
+	return fmt.Sprintf("%d\n", n.value)
 }

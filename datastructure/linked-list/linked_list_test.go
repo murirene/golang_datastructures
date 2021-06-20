@@ -31,3 +31,24 @@ func TestLinkedListNode(t *testing.T) {
 		runner = node1.next
 	}
 }
+
+func TestLinkedListAdd(t *testing.T) {
+	var list LinkedList
+	values := [4]int{100, 200, 300, 500}
+
+	for _, value := range values {
+		list = *list.Add(value)
+	}
+
+	list_values := list.ToArray()
+
+	if len(values) != len(list_values) {
+		t.Fatal(fmt.Sprintf("Size was not the same on the list %d != %d", len(values), len(list_values)))
+	}
+
+	for i, v := range values {
+		if v != list_values[i] {
+			t.Fatal(fmt.Sprintf("%d != %d", v, list_values[i]))
+		}
+	}
+}
