@@ -37,7 +37,7 @@ func TestLinkedListAdd(t *testing.T) {
 	values := [4]int{100, 200, 300, 500}
 
 	for _, value := range values {
-		list = *list.Add(value)
+		list.Push(value)
 	}
 
 	list_values := list.ToArray()
@@ -51,4 +51,12 @@ func TestLinkedListAdd(t *testing.T) {
 			t.Fatal(fmt.Sprintf("%d != %d", v, list_values[i]))
 		}
 	}
+
+    for list.size > 0 {
+        list.Pop()
+    }
+
+    if list.head != nil && list.tail != nil && list.size == 0 {
+        t.Fatal("List was not empty")
+    }
 }

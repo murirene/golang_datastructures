@@ -2,17 +2,26 @@ package main
 
 import (
 	"fmt"
-	datastructure "go-ds-rene/datastructure/linked-list"
+	"go-ds-rene/datastructure"
 )
 
 func main() {
 	var list datastructure.LinkedList
-	list = *list.Add(1)
-	list = *list.Add(2)
-	list = *list.Add(3)
-	var arr []int = list.ToArray()
+	list.Push(1)
+	list.Push(2)
+	list.Push(3)
+    var arr []int = list.ToArray()
 	for _, v := range arr {
 		fmt.Printf("%d ", v)
 	}
 	fmt.Println()
+
+    for !list.IsEmpty() {
+        value, err := list.Pop()
+        if err != nil {
+            fmt.Println(err)
+            break
+        }
+        fmt.Printf("*Pop %d\n", value)
+    }
 }
