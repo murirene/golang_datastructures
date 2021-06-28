@@ -3,6 +3,8 @@ package datastructure_test
 import ( 
 "testing"
 "go-ds-rene/datastructure"
+"reflect"
+"fmt"
 )
 
 func TestBinaryTree(t *testing.T) {
@@ -14,4 +16,14 @@ func TestBinaryTree(t *testing.T) {
     tree.Insert(1)
     tree.Insert(9)
     tree.Insert(10)
+
+    list := tree.ToArray()
+
+    expectedList :=  []int{1, 4, 5, 9, 10}
+    fmt.Println(expectedList)
+    fmt.Println(list)
+    if !reflect.DeepEqual(list,expectedList) {
+        t.Fatal("Arrays not the same!")
+    }
+
 }

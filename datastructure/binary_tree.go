@@ -1,5 +1,7 @@
 package datastructure
-import "errors"
+import (
+    "errors"
+)
 
 type TNode struct {
     left *TNode
@@ -61,4 +63,27 @@ func (treePtr *BinaryTree) Insert(value int) error {
     }
 
     return nil
+}
+
+func toArrayHelper(root *TNode, list []int) []int {
+    if root != nil {
+       if root.left != nil {
+          list = toArrayHelper(root.left, list)
+       }
+       list = append(list, root.value)
+       if root.right != nil {
+          list = toArrayHelper(root.right, list)
+       }
+    }
+
+    return list
+}
+
+func (tree BinaryTree) ToArray() []int {
+    list := make([]int, 0) 
+    if tree.root == nil {
+        return list
+    }
+
+   return toArrayHelper(tree.root, list)
 }
