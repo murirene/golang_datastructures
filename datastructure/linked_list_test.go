@@ -52,11 +52,11 @@ func TestLinkedListAdd(t *testing.T) {
 		}
 	}
 
-    for list.size > 0 {
-        list.Pop()
-    }
+	for list.size > 0 {
+		list.Pop()
+	}
 
-    if list.head != nil && list.tail != nil && list.size == 0 {
-        t.Fatal("List was not empty")
-    }
+	if list.head != nil && list.tail != nil && list.size == 0 {
+		t.Fatal("List was not empty")
+	}
 }

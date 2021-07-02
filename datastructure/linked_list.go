@@ -1,6 +1,6 @@
 package datastructure
 
-import "errors" 
+import "errors"
 
 type LinkedList struct {
 	head *Node
@@ -12,7 +12,7 @@ func (h *LinkedList) Push(value int) {
 	node := Node{
 		value: value,
 		next:  nil,
-        prev:  nil,
+		prev:  nil,
 	}
 
 	if h == nil {
@@ -25,32 +25,32 @@ func (h *LinkedList) Push(value int) {
 		h.head = &node
 	} else {
 		h.tail.next = &node
-        node.prev = h.tail
+		node.prev = h.tail
 		h.tail = h.tail.next
 	}
 
 	h.size = h.size + 1
 }
 
-func (h* LinkedList) Pop() (int, error) {
+func (h *LinkedList) Pop() (int, error) {
 	if h.head == nil && h.tail == nil {
 		return 0, errors.New("Can't pop an empty array\n")
 	}
 
-    h.size = h.size - 1
-    value := h.head.value
-    if h.head == h.tail {
-        h.head = nil;
-        h.tail = nil;
-        h.size = 0
-    } else {
-        h.head = h.head.next
-    }
-    return value, nil
+	h.size = h.size - 1
+	value := h.head.value
+	if h.head == h.tail {
+		h.head = nil
+		h.tail = nil
+		h.size = 0
+	} else {
+		h.head = h.head.next
+	}
+	return value, nil
 }
 
 func (h *LinkedList) IsEmpty() bool {
-    return h.size == 0
+	return h.size == 0
 }
 
 func (h *LinkedList) ToArray() []int {
