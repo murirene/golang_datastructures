@@ -60,3 +60,30 @@ func TestLinkedListAdd(t *testing.T) {
 		t.Fatal("List was not empty")
 	}
 }
+
+func TestLinkedListNodeString(t *testing.T) {
+	node := Node{
+		value: 200,
+	}
+
+	nodeStr := fmt.Sprintf("%v", node)
+
+	if nodeStr != "200" {
+		t.Fatal("Failed to stringify Node")
+	}
+}
+
+func TestLinkedListString(t *testing.T) {
+	var list LinkedList
+	list.Push(4)
+	list.Push(5)
+	list.Push(1)
+	list.Push(3)
+	list.Push(2)
+
+	listStr := fmt.Sprintf("%v", list)
+
+	if listStr != "4->5->1->3->2" {
+		t.Fatal("Failed to stringify the linked list")
+	}
+}

@@ -1,6 +1,19 @@
 package datastructure
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
+
+type Node struct {
+	value int
+	next  *Node
+	prev  *Node
+}
+
+func (n Node) String() string {
+	return fmt.Sprintf("%d", n.value)
+}
 
 type LinkedList struct {
 	head *Node
@@ -51,6 +64,19 @@ func (h *LinkedList) Pop() (int, error) {
 
 func (h *LinkedList) IsEmpty() bool {
 	return h.size == 0
+}
+
+func (l LinkedList) String() string {
+	buffer := ""
+	arrow := "->"
+	for runner := l.head; runner != nil; runner = runner.next {
+		if runner == l.tail {
+			arrow = ""
+		}
+		buffer = fmt.Sprintf("%s%v%s", buffer, runner, arrow)
+	}
+
+	return buffer
 }
 
 func (h *LinkedList) ToArray() []int {
