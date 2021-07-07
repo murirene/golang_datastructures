@@ -21,6 +21,12 @@ type LinkedList struct {
 	size int
 }
 
+func MakeLinkedList() LinkedList {
+   return LinkedList {
+       size: 0,
+    }
+}
+
 func (h *LinkedList) Push(value int) {
 	node := Node{
 		value: value,
@@ -88,4 +94,8 @@ func (h *LinkedList) ToArray() []int {
 	}
 
 	return list
+}
+
+func (l LinkedList) Size() int {
+    return l.size
 }
